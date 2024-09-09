@@ -41,7 +41,7 @@ export const FeaturesCardsSection = () => {
         <div className="mt-36 flex lg:mt-48">
           <div className="flex flex-none gap-8">
             {cardData.map(({ images, title, description, color }) => (
-              <CardComponent  key={title} className="max-w-xs md:max-w-md" color="color"> 
+              <CardComponent  key={title} className="max-w-xs md:max-w-md" color={color}> 
                 <div className="flex justify-center -mt-28">
                   <div className="inline-flex relative">
                     <div className="absolute h-[16px] w-full top-[calc(100%+16px)] bg-zinc-950/70 rounded-[100%] [mask-image:radial-gradient(closest-side,black,transparent)] group-hover:bg-zinc-950/30 transition duration-300 "></div>

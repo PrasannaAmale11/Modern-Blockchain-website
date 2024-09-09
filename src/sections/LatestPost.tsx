@@ -3,6 +3,7 @@ import { CardComponent } from "../components/Cards";
 import { getPostColorsFromCategory } from "../utils/postUtils";
 import { Tag } from "../components/Tag";
 import { CutCornerButton } from "../components/CutCornerButton";
+import { twMerge } from "tailwind-merge";
 
 export const LastestPostSection = (props: {
   latestPosts: CollectionEntry<"blog">[];
@@ -12,20 +13,24 @@ export const LastestPostSection = (props: {
     <>
       <section className="py-60">
         <div className="container">
-          <h2 className="font-heading font-black text-4xl text-center">
+          <div className="max-w-3xl mx-auto">
+          <h2 className="font-heading font-black text-4xl text-center md:text-5xl lg:text-6xl">
             Your portal to everything blockchain
           </h2>
-          <p className="text-xl text-center text-zinc-400 mt-8">
+          <p className="text-xl text-center text-zinc-400 mt-8 lg:text-2xl">
             Keep up with the newest trends, updates, and insights in the
             blockchain world, updated weekly
           </p>
-          <div className="mt-16 flex flex-col gap-8">
+          </div>
+          <div className="mt-16 md:mt-28 grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div className="flex flex-col gap-8">
             {latestPosts.map(
               ({ data: { title, category, description } }, postIndex) => (
                 <CardComponent
                   key={postIndex}
                   buttonText="Read More"
                   color={getPostColorsFromCategory(category)}
+                  className={twMerge((postIndex===1 || postIndex=== 3) && 'md:hidden' )}
                 >
                   <Tag color={getPostColorsFromCategory(category)}>
                     {category}
@@ -37,8 +42,29 @@ export const LastestPostSection = (props: {
                 </CardComponent>
               )
             )}
+            </div>
+            <div className="hidden md:flex flex-col gap-8 mt-16">
+            {latestPosts.map(
+              ({ data: { title, category, description } }, postIndex) => (
+                <CardComponent
+                  key={postIndex}
+                  buttonText="Read More"
+                  color={getPostColorsFromCategory(category)}
+                  className={twMerge((postIndex=== 0 || postIndex=== 2) && 'md:hidden' )}
+                >
+                  <Tag color={getPostColorsFromCategory(category)}>
+                    {category}
+                  </Tag>
+                  <h3 className="font-heading font-black text-3xl mt-3">
+                    {title}
+                  </h3>
+                  <p className="text-lg text-zinc-400 mt-6">{description}</p>
+                </CardComponent>
+              )
+            )}
+            </div>
           </div>
-          <div className=" flex justify-center mt-48">
+          <div className=" flex justify-center mt-48 md:mt-32">
             <CutCornerButton>
               Read The Blog
             </CutCornerButton>
