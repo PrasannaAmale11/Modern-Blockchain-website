@@ -61,7 +61,7 @@ export const HeroSection = () => {
                 <HexagonSvgComponent className="size-[1800px]" />
               </div>
               <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
-                <CircleComponent className="absolute left-[200px] -top-[900px]">
+                <CircleComponent className="absolute left-[200px] -top-[900px]" animate>
                   <motion.img
                     src="/assets/images/cube.png"
                     alt="cube3D Image"
@@ -87,7 +87,7 @@ export const HeroSection = () => {
                 </CircleComponent>
               </div>
               <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
-                <CircleComponent className="top-[270px] left-[200px] absolute">
+                <CircleComponent className="top-[270px] left-[200px] absolute" animate>
                   <motion.img
                     src="/assets/images/cuboid.png"
                     alt="cuboid 3D Image"
