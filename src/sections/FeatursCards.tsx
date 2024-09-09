@@ -1,5 +1,5 @@
 import { twMerge } from "tailwind-merge";
-import { CardComponent } from "../components/card";
+import { CardComponent } from "../components/Cards";
 
 export const FeaturesCardsSection = () => {
   const cardData = [

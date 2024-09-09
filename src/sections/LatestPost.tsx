@@ -1,5 +1,5 @@
 import type { CollectionEntry } from "astro:content";
-import { CardComponent } from "../components/card";
+import { CardComponent } from "../components/Cards";
 import { getPostColorsFromCategory } from "../utils/postUtils";
 import { Tag } from "../components/Tag";
 import { CutCornerButton } from "../components/CutCornerButton";
