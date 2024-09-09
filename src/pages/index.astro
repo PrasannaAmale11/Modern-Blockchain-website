@@ -6,6 +6,7 @@ import {FeaturesCardsSection} from "../sections/FeatursCards.tsx";
 import {FeaturesGridSection} from "../sections/FeaturesGrid.tsx";
 import {LastestPostSection} from "../sections/LatestPost.tsx";
 import {TestimonialsSection} from "../sections/Testimonials.tsx";
+import {CallToActionSection} from "../sections/CallToAction.tsx";
 import {getCollection} from "astro:content";
 
 const posts = await getCollection('blog');
@@ -24,4 +25,5 @@ const latestPosts = posts.sort((a,b)=>{
   <FeaturesGridSection/>
   <LastestPostSection latestPosts = {latestPosts}/>
   <TestimonialsSection/>
+  <CallToActionSection/>
 </DefaultLayout>
