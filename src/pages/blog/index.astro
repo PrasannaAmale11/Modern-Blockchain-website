@@ -33,10 +33,10 @@ const latestPost = posts[0];
         >
           Latest Post
         </p>
-        <h1 class="font-heading font-black text-7xl text-center mt-4">
+        <h1 class="font-heading font-black text-5xl md:text-6xl lg:text-7xl text-center mt-4">
           {latestPost.data.title}
         </h1>
-        <p class="text-center text-2xl mt-6 text-zinc-400 max-w-xl mx-auto">
+        <p class="text-center text-xl md:text-2xl mt-6 text-zinc-400 max-w-xl mx-auto">
           {latestPost.data.description}
         </p>
         <div class="flex justify-center mt-10">
@@ -49,8 +49,8 @@ const latestPost = posts[0];
   </section>
   <section class=" py-32 bg-zinc-900/30 backdrop-blur-sm">
     <div class="container">
-      <div class="grid grid-cols-2 gap-8">
-        <div class="flex flex-col gap-12">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div class="flex flex-col gap-8 lg:gap-12">
           {
             posts.map(
               ({ data: { category, title, description }, slug }, index) => (
@@ -63,7 +63,7 @@ const latestPost = posts[0];
                     ease:'easeIn'
                 }}
                   href={`/blog/${slug}`}
-                  className={twMerge(index % 2 === 0 ? "" : "hidden")}
+                  className={twMerge(index % 2 === 0 ? "" : "block md:hidden")}
                   client:load
                   
                 >
@@ -84,7 +84,7 @@ const latestPost = posts[0];
             )
           }
         </div>
-        <div class="flex flex-col gap-12 mt-24">
+        <div class=" flex-col gap-8 lg:gap-12 mt-24 hidden md:flex">
           {
             posts.map(
               ({ data: { category, title, description }, slug }, index) => (
