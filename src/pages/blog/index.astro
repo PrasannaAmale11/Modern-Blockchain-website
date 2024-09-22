@@ -1,7 +1,6 @@
 ---
 import { getCollection } from "astro:content";
 import DefaultLayout from "../../layouts/Default.astro";
-import { HeaderSection } from "../../sections/Header.tsx";
 import { CutCornerButton } from "../../components/CutCornerButton";
 import { HexagonSvgComponent } from "../../components/HexagonSvg";
 import { CardComponent } from "../../components/Cards";
@@ -19,7 +18,7 @@ const latestPost = posts[0];
 ---
 
 <DefaultLayout>
-  <HeaderSection client:load />
+  
   <section class="py-60 relative overflow-x-clip">
     <div class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
       <HexagonSvgComponent size={800} client:load duration={30} />
@@ -48,32 +47,79 @@ const latestPost = posts[0];
       </div>
     </div>
   </section>
-  <section class="pb-[1000px]">
+  <section class=" py-32 bg-zinc-900/30 backdrop-blur-sm">
     <div class="container">
-        <div class="grid grid-cols-2 gap-8">
-            <div class="flex flex-col gap-12">
-                {posts.map(({data:{category, title, description}, slug}, index)=>(
-                    <motion.a href={`/blog/${slug}`} className={twMerge(index % 2 === 0 ? '' : 'hidden')} client:load>
-                    <CardComponent color={getPostColorsFromCategory(category)} buttonText="Read More">
-                        <Tag color={getPostColorsFromCategory(category)}>{category}</Tag>
-                        <h2 class="font-heading font-black font-3xl mt-4">{title}</h2>
-                        <p class="text-lg mt-6 text-zinc-400">{description}</p>
-                    </CardComponent>
+      <div class="grid grid-cols-2 gap-8">
+        <div class="flex flex-col gap-12">
+          {
+            posts.map(
+              ({ data: { category, title, description }, slug }, index) => (
+                <motion.a
+                initial={{opacity:0,y:20}}
+                whileInView={{opacity:1,y:0}}
+                viewport={{once:true, amount: 0.5}}
+                transition={{
+                    duration:0.5,
+                    ease:'easeIn'
+                }}
+                  href={`/blog/${slug}`}
+                  className={twMerge(index % 2 === 0 ? "" : "hidden")}
+                  client:load
+                  
+                >
+                  <CardComponent
+                    color={getPostColorsFromCategory(category)}
+                    buttonText="Read More"
+                  >
+                    <Tag color={getPostColorsFromCategory(category)}>
+                      {category}
+                    </Tag>
+                    <h2 class="font-heading font-black font-3xl mt-4">
+                      {title}
+                    </h2>
+                    <p class="text-lg mt-6 text-zinc-400">{description}</p>
+                  </CardComponent>
                 </motion.a>
-                ))}
-            </div>
-            <div class="flex flex-col gap-12 mt-24">
-                {posts.map(({data:{category, title, description}, slug}, index)=>(
-                    <motion.a href={`/blog/${slug}`} className={twMerge(index % 2 === 0 ? 'hidden' : '')} client:load>
-                    <CardComponent color={getPostColorsFromCategory(category)} buttonText="Read More">
-                        <Tag color={getPostColorsFromCategory(category)}>{category}</Tag>
-                        <h2 class="font-heading font-black font-3xl mt-4">{title}</h2>
-                        <p class="text-lg mt-6 text-zinc-400">{description}</p>
-                    </CardComponent>
-                </motion.a>
-                ))}
-            </div>
+              )
+            )
+          }
         </div>
+        <div class="flex flex-col gap-12 mt-24">
+          {
+            posts.map(
+              ({ data: { category, title, description }, slug }, index) => (
+                <motion.a
+                  href={`/blog/${slug}`}
+                  className={twMerge(index % 2 === 0 ? "hidden" : "")}
+                  client:load
+                  initial={{opacity:0,y:20}}
+                whileInView={{opacity:1,y:0}}
+                viewport={{once:true, amount: 0.5}}
+                transition={{
+                    duration:0.5,
+                    ease:'easeIn'
+                }}
+                >
+                  <CardComponent
+                    color={getPostColorsFromCategory(category)}
+                    buttonText="Read More"
+                  >
+                    <Tag color={getPostColorsFromCategory(category)}>
+                      {category}
+                    </Tag>
+                    <h2 class="font-heading font-black font-3xl mt-4">
+                      {title}
+                    </h2>
+                    <p class="text-lg mt-6 text-zinc-400">{description}</p>
+                  </CardComponent>
+                </motion.a>
+              )
+            )
+          }
+        </div>
+      </div>
     </div>
   </section>
+ 
+ 
 </DefaultLayout>
