@@ -76,9 +76,11 @@ export const LastestPostSection = (props: {
             </motion.div>
           </div>
           <div className=" flex justify-center mt-48 md:mt-32">
+            <a href="/blog">
             <CutCornerButton>
               Read The Blog
             </CutCornerButton>
+            </a>
           </div>
         </div>
       </section>
