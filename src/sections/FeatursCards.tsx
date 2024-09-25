@@ -59,7 +59,7 @@ export const FeaturesCardsSection = () => {
             {cardData.map(
               ({ images, title, description, color }, cardIndex) => (
                 <div
-                  key={title}
+                  key={cardIndex}
                   onMouseEnter={() => setIsHovered(true)}
                   onMouseLeave={() => setIsHovered(false)}
                   className="inline-flex transition-all duration-500"

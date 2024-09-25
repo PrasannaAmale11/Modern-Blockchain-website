@@ -57,7 +57,7 @@ export const Footer = () => {
 
           <div className="mt-4 md:mt-0 flex gap-6">
             {socialIcons.map((icons, iconIndex) => (
-              <div className="inline-flex size-10 bg-zinc-800 rounded-full items-center justify-center">
+              <div className="inline-flex size-10 bg-zinc-800 rounded-full items-center justify-center" key={iconIndex}>
                 {icons.icon}
               </div>
             ))}

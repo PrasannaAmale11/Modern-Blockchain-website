@@ -2,7 +2,7 @@ import { CutCornerButton } from "../components/CutCornerButton";
 import { HexagonSvgComponent } from "../components/HexagonSvg";
 import { CircleComponent } from "../components/Circle";
 import { useRef } from "react";
-import { easeInOut, motion, useScroll, useTransform } from "framer-motion";
+import {  motion, useScroll, useTransform } from "framer-motion";
 
 
 export const CallToActionSection = () => {
@@ -37,7 +37,7 @@ const cuboidRotate = useTransform(cuboidScrollYProgress, [0,1], [20,-45]);
           </div>
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
           <CircleComponent className="absolute -left-[600px] -top-[70px]" animate>
-            <motion.img src="/assets/images/cylinder.png" alt="cylinder image" className="size-[140px]" style={{
+            <motion.img src="/assets/images/cylinder.png" alt="cylinder image" className="size-[140px]" ref={cylinderRef} style={{
               rotate:cuboidRotate ,
             }} />
           </CircleComponent>
